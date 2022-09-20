@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <!-- 여러개 elements를 한번에 render하기 위해 empty div를 생성한다. -->
+        <div id="root"></div> 
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        let counter = 0;
+        const root = document.getElementById("root");
+
+        // All components should start with a capital letter
+        // state: changable data
+
+        const Title =  () => (    
+            <h3 id="title" onMouseEnter= {()=> console.log("mouse entered")} >
+                Hello I'm a title
+            </h3>
+        )
+        // create a span element using js
+        // 1st: element type, 2nd: props (element property | event listener), 3rd: content
+        // const span = React.createElement("h3", 
+        // { id: "cool", style: { 
+        //         color: "RED"
+        //     }, onMouseEnter: () => console.log("mouse entered")
+        // }, `Total Clicks: ${counter} `);    
+
+
+        const Button = () => (
+            <button id="btn" style={{backgroudColor: "RED"}} onClick={ ()=>  console.log('Clicked ')}> 
+                Click Me 
+            </button>
+        )
+        // const btn = React.createElement("button", { 
+        //     onClick: () => {
+        //         console.log("clickec");
+        //         counter += 1
+        //     }
+        // }, "Click me")
+
+        // render elements together by putting them in an array, aka component
+
+        // container에 호출할 때 컴포넌트처럼...미쳤다
+        const Container = () => <div>
+                <Title />
+                <Button />
+            </div>
+        // const container = React.createElement("div", null, [Title, Button])
+
+        // render: show it to the user
+        ReactDOM.render(<Container />, root);
+        // ReactDOM.render(Container, root);
+    </script>
+</html>
